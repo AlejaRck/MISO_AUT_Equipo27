@@ -36,7 +36,7 @@ def setup():
         browser.close()
 
 @pytest.mark.test_id("AUT-001")
-def test_creacion_exitosa_post(setup):
+def test_creacion_exitosa_post_aut_001(setup):
     # Accedemos a la página que ya está autenticada
     page = setup
     post_page = PostPage(page)
@@ -52,7 +52,7 @@ def test_creacion_exitosa_post(setup):
 
 
 @pytest.mark.test_id("AUT-002")
-def test_intentar_crear_un_post_sin_titulo(setup):
+def test_intentar_crear_un_post_sin_titulo_aut_002(setup):
 
     page = setup
     post_page = PostPage(page)
@@ -68,7 +68,7 @@ def test_intentar_crear_un_post_sin_titulo(setup):
 
 
 @pytest.mark.test_id("AUT-003")
-def test_creacion_exitosa_de_un_miembro(setup):
+def test_creacion_exitosa_de_un_miembro_aut_003(setup):
     page = setup
     member_page = MemberPage(page)
     fake = Faker()
@@ -85,7 +85,7 @@ def test_creacion_exitosa_de_un_miembro(setup):
 
 
 @pytest.mark.test_id("AUT-004")
-def test_intentar_crear_un_miembro_sin_correo_electronico(setup):
+def test_intentar_crear_un_miembro_sin_correo_electronico_aut_004(setup):
     page = setup
     member_page = MemberPage(page)
     fake = Faker()
@@ -102,7 +102,7 @@ def test_intentar_crear_un_miembro_sin_correo_electronico(setup):
 
 
 @pytest.mark.test_id("AUT-005")
-def test_intento_de_crear_un_miembro_con_correo_duplicado(setup):
+def test_intento_de_crear_un_miembro_con_correo_duplicado_aut_005(setup):
     page = setup
     member_page = MemberPage(page)
     fake = Faker()
@@ -122,7 +122,7 @@ def test_intento_de_crear_un_miembro_con_correo_duplicado(setup):
 
 
 @pytest.mark.test_id("AUT-009")
-def test_creacion_exitosa_tag(setup):
+def test_creacion_exitosa_tag_aut_009(setup):
     page = setup
     tags_page = TagsPage(page)
     fake = Faker()
@@ -138,7 +138,7 @@ def test_creacion_exitosa_tag(setup):
 
 
 @pytest.mark.test_id("AUT-010")
-def test_intentar_crear_un_tag_sin_autenticacion():
+def test_intentar_crear_un_tag_sin_autenticacion_aut_0010():
     with sync_playwright() as p:
         # Lanzamos el navegador en modo no-headless (para ver el navegador)
         browser = p.chromium.launch(headless=False)  # Cambiar a headless=False para ver el navegador
@@ -156,7 +156,7 @@ def test_intentar_crear_un_tag_sin_autenticacion():
 
 
 @pytest.mark.test_id("AUT-006")
-def test_creacion_exitosa_pagina(setup):
+def test_creacion_exitosa_pagina_aut_006(setup):
     page = setup
     page_page = PagePage(page)
     fake = Faker()
@@ -173,7 +173,7 @@ def test_creacion_exitosa_pagina(setup):
 
 
 @pytest.mark.test_id("AUT-007")
-def test_intentar_crear_pagina_sin_contenido(setup):
+def test_intentar_crear_pagina_sin_contenido_aut_007(setup):
     page = setup
     page_page = PagePage(page)
     fake = Faker()
@@ -189,7 +189,7 @@ def test_intentar_crear_pagina_sin_contenido(setup):
 
 
 @pytest.mark.test_id("AUT-008")
-def test_actualizacion_del_sitio(setup):
+def test_actualizacion_del_sitio_aut_008(setup):
     page =  setup
     config_page =  ConfigPage(page)
     fake = Faker()
