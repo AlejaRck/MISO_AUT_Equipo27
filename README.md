@@ -1,5 +1,8 @@
 # MISO_AUT_Equipo27
-
+#integrantes 
+Sebastian Betancourth Zapata correo = s.betancourth@uniandes.edu.co
+Alejandra pinzon suarez correo = ma.pinzons1@uniandes.edu.co
+         
 ## Instrucciones para ejecutar las pruebas con playwrigh y generar el reporte HTML:
 
     Clonar el repositorio: Primero, debes clonar el repositorio en tu máquina local utilizando el siguiente comando:
