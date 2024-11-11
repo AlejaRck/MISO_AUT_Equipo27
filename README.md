@@ -1,6 +1,6 @@
 # MISO_AUT_Equipo27
 
-Instrucciones para ejecutar las pruebas y generar el reporte HTML:
+## Instrucciones para ejecutar las pruebas con playwrigh y generar el reporte HTML:
 
     Clonar el repositorio: Primero, debes clonar el repositorio en tu máquina local utilizando el siguiente comando:
 
