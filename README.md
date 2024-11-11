@@ -6,7 +6,7 @@ Instrucciones para ejecutar las pruebas y generar el reporte HTML:
 
 git clone https://github.com/AlejaRck/MISO_AUT_Equipo27
 
-Acceder a la carpeta de pruebas: Luego, navega hasta la carpeta llamada e2e_playwright dentro del repositorio clonado:
+Luego, navega hasta la carpeta llamada e2e_playwright dentro del repositorio clonado:
 
 cd e2e_playwright
 
