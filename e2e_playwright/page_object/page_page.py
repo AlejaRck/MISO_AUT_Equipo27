@@ -4,15 +4,13 @@ from playwright.sync_api import Page
 class PagePage:
     def __init__(self, page: Page):
         self.page = page
-        self.page_pages = 'a[data-test-nav="pages"]'
-        self.new_pages = "a[data-test-new-page-button]"
-        self.title_input = 'textarea[placeholder="Page title"]'
+        self.page_pages = 'a[href="#/pages/"]'
+        self.new_pages = "a.gh-btn.gh-btn-primary.view-actions-top-row"
+        self.title_input = 'textarea[placeholder="Page Title"]'
         self.content_input = 'div[contenteditable="true"]'
-        self.save_page = 'button.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger'
-        self.continue_button = 'button[data-test-button="continue"]'
-        self.button_accept_visable = 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view:not([disabled]):visible'
-        self.button_accept = 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'
-        self.button_public = 'button[data-test-button="close-publish-flow"]'
+        self.save_page = 'div.gh-btn.gh-btn-editor.gh-publishmenu-trigger'
+        self.button_public = 'button.gh-btn.gh-btn-black.gh-publishmenu-button'
+        self.button_return_post = 'a.gh-editor-back-button'
 
 
     def go_to_create_page(self):
@@ -27,13 +25,11 @@ class PagePage:
         self.page.fill(self.title_input, title)
         self.page.fill(self.content_input, content)
         self.page.click(self.save_page)
-        self.page.wait_for_selector(self.continue_button)
-        self.page.click(self.continue_button)
-        self.page.wait_for_selector(self.button_accept_visable)
-        self.page.click(self.button_accept, force=True)
         self.page.wait_for_selector(self.button_public)
         self.page.click(self.button_public)
         self.page.wait_for_timeout(2000)
 
     def is_page_published(self, title: str) -> bool:
+        self.page.wait_for_selector(self.button_return_post)
+        self.page.click(self.button_return_post)
         return self.page.is_visible(f"text='{title}'")

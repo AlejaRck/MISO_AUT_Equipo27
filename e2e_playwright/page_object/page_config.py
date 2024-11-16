@@ -5,16 +5,17 @@ class ConfigPage:
     def __init__(self, page: Page):
         self.page = page
         self.page_config = "a:has-text('Settings')"
-        self.edit_title_des_visible = "div[data-testid='title-and-description'] button:has-text('Edit'):visible"
-        self.edit_button = "div[data-testid='title-and-description'] button:has-text('Edit')"
-        self.title_input = "input[placeholder='Site title']"
-        self.save_button = "button.cursor-pointer.bg-green.text-white"
-        self.exit_button = 'button[data-testid="exit-settings"]'
-        self.dasboard = "text=Dashboard"
+        self.general_config = 'a[href="#/settings/general/"]'
+        self.edit_title_des_visible = 'h4.gh-expandable-title:has-text("Title & description")'
+        self.edit_button = 'div.gh-expandable-header:has(h4.gh-expandable-title:has-text("Title & description")) button.gh-btn'
+        self.title_input = 'input[type="text"]'
+        self.save_button = 'button.gh-btn:has-text("Save settings")'
 
     def go_to_config_page(self):
 
         self.page.click(self.page_config)
+        self.page.wait_for_selector(self.general_config)
+        self.page.click(self.general_config)
 
     def actualizar_config_page(self, title: str):
         self.page.wait_for_selector(self.edit_title_des_visible)
@@ -23,14 +24,13 @@ class ConfigPage:
         self.page.fill(self.title_input, title)
         self.page.wait_for_selector(self.save_button)
         self.page.click(self.save_button)
+        self.page.wait_for_timeout(2000)
 
     def is_title_updated(self, title):
 
-        self.page.wait_for_selector(self.exit_button)
-        self.page.click(self.exit_button)
-        self.page.wait_for_selector(self.dasboard)
         titulo = self.page.title()
-        if f'Ghost Admin - {title}' == titulo:
+        print(titulo)
+        if f'Settings - General - {title}' == titulo:
             return True
         else:
             return False
