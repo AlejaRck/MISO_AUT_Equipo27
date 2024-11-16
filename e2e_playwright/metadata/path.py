@@ -8,6 +8,9 @@ class Path:
     input_ = os.path.join(path_folder, '..', 'input')
     """Path donde se encuentran los archivos de entrada"""
 
+    output_ = os.path.join(path_folder, '..', 'output')
+    result_img = os.path.join(output_, 'resultado_img')
+
     config = os.path.join(input_, 'config.yaml')
     """Path donde se encuentran el archivo de config"""
 
