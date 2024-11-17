@@ -23,12 +23,12 @@ class ConfigPage:
         self.page.fill(self.title_input, title)
         self.page.wait_for_selector(self.save_button)
         self.page.click(self.save_button)
+        self.page.wait_for_timeout(2000)
 
     def is_title_updated(self, title):
 
-        self.page.wait_for_selector(self.exit_button)
-        self.page.click(self.exit_button)
-        self.page.wait_for_selector(self.dasboard)
+        self.page.reload()
+        self.page.wait_for_timeout(2000)
         titulo = self.page.title()
         if f'Ghost Admin - {title}' == titulo:
             return True
