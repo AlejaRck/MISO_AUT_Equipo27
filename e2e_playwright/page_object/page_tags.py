@@ -5,10 +5,10 @@ class TagsPage:
     def __init__(self, page: Page):
         self.page = page
         self.config = get_config()
-        self.page_tags = 'a[data-test-nav="tags"]'
-        self.new_tag = 'a.gh-btn.gh-btn-primary'
+        self.page_tags = 'a[href="#/tags/"]'
+        self.new_tag = 'a.gh-btn.gh-btn-primary.ember-view'
         self.name_input = "input[name='name']"
-        self.save_button = 'button[data-test-button="save"]'
+        self.save_button = 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view'
         self.tags_names = '.gh-tag-list-name'
         self.tags_url = f'{self.config["ghost_url"]}/#/tags/new'
         self.name_input_aut = "input[name='identification']"

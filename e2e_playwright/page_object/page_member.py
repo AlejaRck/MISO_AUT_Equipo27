@@ -4,11 +4,11 @@ from playwright.sync_api import Page
 class MemberPage:
     def __init__(self, page: Page):
         self.page = page
-        self.select_members = 'a[data-test-nav="members"]'
-        self.new_member = 'a[data-test-new-member-button="true"]'
+        self.select_members = 'a[href="#/members/"]'
+        self.new_member = 'a.gh-btn.gh-btn-primary.ember-view'
         self.email_input = "input[name='email']"
         self.name_input = "input[name='name']"
-        self.save_button = 'button[data-test-button="save"]'
+        self.save_button = 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view'
         self.member_list = 'h3.gh-members-list-name'
         self.error_message_email = 'div.form-group.max-width.error p.response'
         self.save_button_no_disable = "gh-btn gh-btn-primary gh-btn-icon ember-view"
