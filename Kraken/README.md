@@ -1,4 +1,4 @@
-PRUEBAS AUTOMATIZADAS CON KRAKEN
+PRUEBAS AUTOMATIZADAS CON KRAKEN (VERSION 5.96)
 Equipo: 27 
 Integrantes: 
 * Sebastian Betancourth Zapata (s.betancourth@uniandes.edu.co)
@@ -17,13 +17,10 @@ INSTRUCCIONES DE INSTALACIÓN: (Instrucciones para Mackbook con Chip Intel. No s
 * Preparación ambiente de pruebas. 
   - Iniciar Ghost 5.96 (En caso de no tenerlo instalar siguiendo la documentación del link https://ghost.org/docs/install/)
   - Crear un usuario Administrador  en Ghost
-  - Clonar el repositorio https://github.com/AlejaRck/MISO_AUT_Equipo27
-  - Modificar las credenciales de acceso en el archivo properties.json
+  - Clonar el repositorio https://github.com/AlejaRck/MISO_AUT_Equipo27 y ubicarse en el branch main
+  - Modificar las credenciales de acceso en el archivo step.js (Lineas 9 y 10)
 * Preparación data para ejecución 
   - Tener un usuario nuevo y haber realizado el onboarding de Ghost
   - Contar solo con el tag que se crea por defecto 
 * Ejecución de las pruebas
   - Ejecutar el comando npx kraken-node run para iniciar la ejecución 
-
-
-

@@ -152,8 +152,8 @@ def test_intento_de_crear_un_miembro_con_correo_duplicado_aut_005(setup):
     assert is_duplicate
 
 
-@pytest.mark.test_id("AUT-009")
-def test_creacion_exitosa_tag_aut_009(setup):
+@pytest.mark.test_id("AUT-010")
+def test_creacion_exitosa_tag_aut_010(setup):
     page = setup
     tags_page = TagsPage(page)
     fake = Faker()
@@ -166,12 +166,12 @@ def test_creacion_exitosa_tag_aut_009(setup):
 
     # Then
     tag_created = tags_page.is_tag_created(nombre)
-    screenshot_test(page, 'AUT-009')
+    screenshot_test(page, 'AUT-010')
     assert tag_created
 
 
-@pytest.mark.test_id("AUT-010")
-def test_intentar_crear_un_tag_sin_autenticacion_aut_0010(setup_sin_login):
+@pytest.mark.test_id("AUT-009")
+def test_intentar_crear_un_tag_sin_autenticacion_aut_009(setup_sin_login):
 
     page = setup_sin_login
     tags_page = TagsPage(page)
@@ -181,7 +181,7 @@ def test_intentar_crear_un_tag_sin_autenticacion_aut_0010(setup_sin_login):
     validate_page_tags = tags_page.validate_page_tags_sin_aut()
 
     #Then
-    screenshot_test(page, 'AUT-010')
+    screenshot_test(page, 'AUT-009')
     assert validate_page_tags
 
 
