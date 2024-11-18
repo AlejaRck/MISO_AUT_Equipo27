@@ -9,7 +9,10 @@ class Path:
     """Path donde se encuentran los archivos de entrada"""
 
     output_ = os.path.join(path_folder, '..', 'output')
-    result_img = os.path.join(output_, 'resultado_img')
+    result_img_version_base = os.path.join(output_, 'resultado_img_version_base')
+    result_img_versrion_rc = os.path.join(output_, 'resultado_img_version_rc')
+    result_diff_imge = os.path.join(output_, 'resultado_img_diff')
+
 
     config = os.path.join(input_, 'config.yaml')
     """Path donde se encuentran el archivo de config"""

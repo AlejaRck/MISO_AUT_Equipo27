@@ -18,7 +18,7 @@ from faker import Faker
 def setup():
     config = get_config()
 
-    os.makedirs(Path.result_img, exist_ok=True)
+    os.makedirs(Path.result_img_versrion_rc, exist_ok=True)
 
     with sync_playwright() as p:
         # Lanzamos el navegador en modo no-headless (para ver el navegador)
