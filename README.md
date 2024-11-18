@@ -1,7 +1,10 @@
-README - Especificaciones de Versiones de Kreaen y Playwright
+Especificaciones de Versiones de kraken y Playwright Equipo: 27 Integrantes:
+    Sebastian Betancourth Zapata (s.betancourth@uniandes.edu.co)
+    Alejandra Pinzón Suárez (ma.pinzons1@uniandes.edu.co)
+
 
 Este repositorio contiene diferentes versiones de kraken y Playwright, organizadas en carpetas para su correcta implementación. A continuación, se detallan las carpetas y las versiones disponibles.
-Kreaen
+kraken
 
 Las versiones de kraken se encuentran dentro de las siguientes carpetas:
 1. version_base:
