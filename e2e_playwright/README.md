@@ -46,6 +46,19 @@ Ademas se deben instalar las dependencias necesarias para el pixelmatch.js:
 ``` 
 
 Ejecutar las pruebas de e2e_playwright: Ahora, puedes ejecutar las pruebas. Para hacerlo, ejecuta el archivo main.py con el siguiente comando:
+Consideraciones
+Dentro de la carpeta de cada versión (e2e_playwright_45, e2e_playwright_rc), es necesario modificar el archivo ubicado en la carpeta input. En este archivo, se debe configurar lo siguiente:
+
+    1. URL de Ghost: Proporcionar la dirección del servidor de Ghost que se utilizará.
+    2. Usuario: Especificar el nombre de usuario con permisos para acceder al sistema.
+    3. Contraseña: Incluir la contraseña asociada al usuario.
+Asegúrate de guardar los cambios correctamente antes de continuar con la ejecución del proyecto.
+ejemplo:
+```yaml
+ghost_url: http://localhost:3001/ghost: "module"
+admin_user: pruebas@gmail.com
+admin_pass: Lego123456789
+``` 
 para la version base main.py =  main_version_base.py
 para la version rc main.py = main_version_rc.py
 
