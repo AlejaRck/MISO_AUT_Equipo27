@@ -1,6 +1,6 @@
 import os
 from playwright.sync_api import Page
-from metadata.path import Path
+from e2e_playwright_rc.metadata.path import Path
 
 
 def screenshot_test(page:Page, test_id:str):

@@ -1,15 +1,15 @@
 import os
 import pytest
-from metadata.path import Path
+from e2e_playwright_rc.metadata.path import Path
 from playwright.sync_api import BrowserType, sync_playwright
-from page_object.login_page import LoginPage
-from page_object.page_post import PostPage
-from page_object.page_member import MemberPage
-from page_object.page_tags import TagsPage
-from page_object.page_page import PagePage
-from page_object.page_config import ConfigPage
-from utils.open_yaml import get_config
-from utils.screenshot import screenshot_test
+from e2e_playwright_rc.page_object.login_page import LoginPage
+from e2e_playwright_rc.page_object.page_post import PostPage
+from e2e_playwright_rc.page_object.page_member import MemberPage
+from e2e_playwright_rc.page_object.page_tags import TagsPage
+from e2e_playwright_rc.page_object.page_page import PagePage
+from e2e_playwright_rc.page_object.page_config import ConfigPage
+from e2e_playwright_rc.utils.open_yaml import get_config
+from e2e_playwright_rc.utils.screenshot import screenshot_test
 from faker import Faker
 
 

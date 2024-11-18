@@ -6,9 +6,11 @@ import shutil
 
 
 def create_report():
-    base_dir = './output/resultado_img_version_base'
-    rc_dir = './output/resultado_img_version_rc'
-    diff_images_dir = './output/resultado_img_diff' # Imágenes de diferencia
+    base_dir = './e2e_playwright_45/output/resultado_img_version_base'
+    rc_dir = './e2e_playwright_rc/output/resultado_img_version_rc'
+    diff_images_dir = './output/result_img_diff'
+
+
 
     # Verificar que los directorios existan
     if not os.path.exists(base_dir) or not os.path.exists(rc_dir) or not os.path.exists(diff_images_dir):
@@ -103,3 +105,7 @@ def create_report():
         shutil.copy(css_file_path, css_dest_path)
 
     print(f"Reporte generado: {report_path}")
+
+
+if __name__ == '__main__':
+    create_report()
