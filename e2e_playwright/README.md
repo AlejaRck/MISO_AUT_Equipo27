@@ -33,9 +33,13 @@ Instalar las dependencias: Con el entorno virtual activado, instala las dependen
 pip install -r requirements.txt
 
 Ademas se deben instalar las dependencias necesarias para el pixelmatch.js:
+
          1. Se debe tener insalado node v20.18.0
+         
          2. instalar pixelmatch con npm install pngjs pixelmatch
+         
          3. Edita el archivo package.json: Agrega "type": "module" en la raíz del archivo package.json de tu proyecto:
+         
 ```json
 {
     "type": "module",
