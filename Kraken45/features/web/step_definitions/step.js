@@ -308,3 +308,59 @@ When('Se encuentra en la sección de Miembros', async function () {
         console.log ('Error: Tag is not created'); 
     
   })
+
+//Page customizar informacion sitio 
+
+  When ('El usuario ingresa a la opción Settings a la sección Título y Descripción', async function () {
+    const buttonSettings = await this.driver.$('.//a[@href="#/settings/"]');
+    await buttonSettings.waitForClickable({ timeout: 5000 })
+    await buttonSettings.click();
+
+    const generalSettings = await this.driver.$('.//a[@href="#/settings/general/"]');
+    await generalSettings.waitForClickable({ timeout: 5000 })
+    await generalSettings.click();
+
+  })
+
+  When ('el usuario ingresa un nuevo título y descripción para el sitio', async function () {
+    const buttonExpand = await this.driver.$('(//button[@class="gh-btn"]//span[text()="Expand"])[1]')
+    await buttonExpand.waitForDisplayed ({timeout: 5000 });
+    await buttonExpand.click();
+  
+    const inputTitle = await this.driver.$('.gh-setting-content-extended .form-group input:first-of-type'); 
+    const inputDescription = await this.driver.$('//p[contains(text(), "Used in your theme, meta data and search results")]/preceding-sibling::input'); 
+    let consecutive = getRandomInt (1,100);
+    await inputTitle.setValue("Automated Customization " + consecutive);
+    await inputDescription.setValue("New text to describe the site " + consecutive);
+  
+  })
+
+  When ('selecciona la opción "Guardar"', async function () {
+    const buttonSave = await this.driver.$('//button[.//span[text()="Close"]]')
+    await buttonSave.click();
+    const buttonSaveSettings = await this.driver.$('//button[.//span[text()="Save settings"]]')
+    await buttonSaveSettings.click();
+  })
+
+  Then('El sistema confirma la actualización de la información', async function () {
+    const buttons = await this.driver.$$('button');   
+    if (buttons.length > 0) {
+      for (let button of buttons) {
+        try {
+          const text = await this.driver.$(el => el.textContent.trim(), button);
+          if (text === 'Saved') {
+            console.log ('Title & Description was update success')
+            break;
+          }
+        } catch (error) {
+          console.error('Error al verificar la actualización', error);
+        }
+      }
+    } else {
+      console.log('No se encontraron botones en la página');
+    }
+  
+  })
+  
+
+  
