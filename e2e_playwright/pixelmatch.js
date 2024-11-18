@@ -1,42 +1,34 @@
-const fs = require('fs');
-const { createCanvas, loadImage } = require('canvas');
-const pixelmatch = require('pixelmatch');
+import fs from 'fs';
+import { PNG } from 'pngjs';
+import pixelmatch from 'pixelmatch';
 
-async function compareImages(basePath, vrcPath, diffPath) {
+async function compareImages(basePath, vrcPath, diffPath, options = {
+    threshold: 0.1,
+    includeAA: true,
+    alpha: 0.1,
+    aaColor: [255, 0, 0],  // Color para anti-aliasing
+    diffColor: [255, 0, 255]  // Color para las diferencias
+}) {
     try {
-        const img1 = await loadImage(basePath);
-        const img2 = await loadImage(vrcPath);
+        // Leer las imágenes
+        const img1 = PNG.sync.read(fs.readFileSync(basePath));
+        const img2 = PNG.sync.read(fs.readFileSync(vrcPath));
 
-        const width = img1.width;
-        const height = img1.height;
+        const { width, height } = img1;
+        const diff = new PNG({ width, height });
 
-        // Crear un canvas para almacenar la diferencia
-        const canvas = createCanvas(width, height);
-        const ctx = canvas.getContext('2d');
-
-        // Extraer datos de las imágenes
-        ctx.drawImage(img1, 0, 0);
-        const img1Data = ctx.getImageData(0, 0, width, height);
-
-        ctx.drawImage(img2, 0, 0);
-        const img2Data = ctx.getImageData(0, 0, width, height);
-
-        const diffData = ctx.createImageData(width, height);
-
-        // Comparar imágenes usando Pixelmatch
+        // Comparar imágenes usando Pixelmatch con las opciones personalizadas
         const numDiffPixels = pixelmatch(
-            img1Data.data,
-            img2Data.data,
-            diffData.data,
+            img1.data,
+            img2.data,
+            diff.data,
             width,
             height,
-            { threshold: 0.1 } // Ajusta el umbral según sea necesario
+            options
         );
 
         // Guardar el resultado del diff
-        ctx.putImageData(diffData, 0, 0);
-        const buffer = canvas.toBuffer('image/png');
-        fs.writeFileSync(diffPath, buffer);
+        fs.writeFileSync(diffPath, PNG.sync.write(diff));
 
         console.log(`Diferencias encontradas: ${numDiffPixels} píxeles`);
     } catch (error) {
@@ -44,6 +36,6 @@ async function compareImages(basePath, vrcPath, diffPath) {
     }
 }
 
-// Obtener argumentos desde Python
+// Obtener argumentos desde la línea de comandos (basePath, vrcPath, diffPath)
 const [,, basePath, vrcPath, diffPath] = process.argv;
 compareImages(basePath, vrcPath, diffPath);

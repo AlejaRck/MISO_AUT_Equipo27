@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-from utils.open_yaml import get_config
+from e2e_playwright_45.utils.open_yaml import get_config
 
 class TagsPage:
     def __init__(self, page: Page):

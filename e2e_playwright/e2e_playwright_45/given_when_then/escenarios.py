@@ -1,15 +1,15 @@
 import os
 import pytest
-from metadata.path import Path
+from e2e_playwright_45.metadata.path import Path
 from playwright.sync_api import BrowserType, sync_playwright
-from page_object.login_page import LoginPage
-from page_object.page_post import PostPage
-from page_object.page_member import MemberPage
-from page_object.page_tags import TagsPage
-from page_object.page_page import PagePage
-from page_object.page_config import ConfigPage
-from utils.open_yaml import get_config
-from utils.screenshot import screenshot_test
+from e2e_playwright_45.page_object.login_page import LoginPage
+from e2e_playwright_45.page_object.page_post import PostPage
+from e2e_playwright_45.page_object.page_member import MemberPage
+from e2e_playwright_45.page_object.page_tags import TagsPage
+from e2e_playwright_45.page_object.page_page import PagePage
+from e2e_playwright_45.page_object.page_config import ConfigPage
+from e2e_playwright_45.utils.open_yaml import get_config
+from e2e_playwright_45.utils.screenshot import screenshot_test
 from faker import Faker
 
 
@@ -18,7 +18,7 @@ from faker import Faker
 def setup():
     config = get_config()
 
-    os.makedirs(Path.result_img, exist_ok=True)
+    os.makedirs(Path.result_img_version_base, exist_ok=True)
 
     with sync_playwright() as p:
         # Lanzamos el navegador en modo no-headless (para ver el navegador)
