@@ -45,7 +45,6 @@ Ademas se deben instalar las dependencias necesarias para el pixelmatch.js:
 }
 ``` 
 
-Ejecutar las pruebas de e2e_playwright: Ahora, puedes ejecutar las pruebas. Para hacerlo, ejecuta el archivo main.py con el siguiente comando:
 Consideraciones
 Dentro de la carpeta de cada versión (e2e_playwright_45, e2e_playwright_rc), es necesario modificar el archivo ubicado en la carpeta input. En este archivo, se debe configurar lo siguiente:
 
@@ -58,22 +57,34 @@ ejemplo:
 ghost_url: http://localhost:3001/ghost: "module"
 admin_user: pruebas@gmail.com
 admin_pass: Lego123456789
-``` 
+```
+
+Ejecutar las pruebas de e2e_playwright: Ahora, puedes ejecutar las pruebas. Para hacerlo, ejecuta el archivo main.py con el siguiente comando:
+
 para la version base main.py =  main_version_base.py
+
 para la version rc main.py = main_version_rc.py
 
 linux = python3 main.py
+
 mac =  python3 main.py
+
 windows = python3 main.py
 
 Ejecutar pruebas de regresión visual:
+
 linux = python3 pixelmatch.py
+
 mac =  python3 pixelmatch.py
+
 windows = python3 pixelmatch.py
 
 Crear reporte de la regresión visual:
+
 linux = python3 report.py
+
 mac =  python3 report.py
+
 windows = python3 report.py
 
 Este comando ejecutará las pruebas y, al finalizar, generará un reporte en formato HTML en la carpeta test-result que podrás revisar para ver los resultados.
