@@ -77,8 +77,8 @@ def test_creacion_exitosa_de_un_miembro_aut_003(setup):
     assert created_member
 
 
-@pytest.mark.test_id("AUT-009")
-def test_creacion_exitosa_tag_aut_009(setup):
+@pytest.mark.test_id("AUT-010")
+def test_creacion_exitosa_tag_aut_010(setup):
     page = setup
     tags_page = TagsPage(page)
     fake = Faker()
@@ -91,7 +91,7 @@ def test_creacion_exitosa_tag_aut_009(setup):
 
     # Then
     tag_created = tags_page.is_tag_created(nombre)
-    screenshot_test(page, 'AUT-009')
+    screenshot_test(page, 'AUT-010')
     assert tag_created
 
 @pytest.mark.test_id("AUT-006")
