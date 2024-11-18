@@ -42,7 +42,8 @@ Ademas se deben instalar las dependencias necesarias para el pixelmatch.js:
     "dependencies": {
         // otras dependencias
     }
-}   
+}
+``` 
 
 Ejecutar las pruebas de e2e_playwright: Ahora, puedes ejecutar las pruebas. Para hacerlo, ejecuta el archivo main.py con el siguiente comando:
 para la version base main.py =  main_version_base.py
