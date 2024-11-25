@@ -32,6 +32,8 @@ Instalar las dependencias: Con el entorno virtual activado, instala las dependen
 
 pip install -r requirements.txt
 
+En este punto ya puede ejecutar el script de main_escenarios_data.py para realizar las pruebas con la generación de datos 
+
 Ademas se deben instalar las dependencias necesarias para el pixelmatch.js:
 
          1. Se debe tener insalado node v20.18.0
