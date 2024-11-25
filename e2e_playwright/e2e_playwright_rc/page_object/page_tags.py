@@ -16,6 +16,9 @@ class TagsPage:
         self.tags_url = f'{self.config["ghost_url"]}/#/tags/new'
         self.name_input_aut = "input[name='identification']"
         self.name_error = 'div.form-group.mr2.flex-auto.error span.error p.response:first-of-type'
+        self.color_error = 'div.gh-tag-settings-multiprop div.form-group.gh-tag-settings-colorcontainer.error'
+        self.error_message_url = 'div.form-group.success p.response:first-of-type'
+        self.error_message_description = 'div.form-group.no-margin.error p.response:first-of-type'
 
     def go_to_create_tags(self):
 
@@ -63,7 +66,38 @@ class TagsPage:
                                     timeout=10000)
 
         response_text = self.page.locator(self.name_error).inner_text()
-        if "You must specify a name for the tag." in response_text or 'The colour should be in valid hex format' in response_text:
+        if "You must specify a name for the tag." in response_text or 'Tag names cannot be longer than 191 characters.' \
+                in response_text:
+            return True
+        else:
+            return False
+
+    def is_color_invalid(self) -> bool:
+        self.page.wait_for_selector(self.color_error, state='visible',
+                                    timeout=10000)
+
+        response_text = self.page.locator(self.color_error).inner_text()
+        if 'in valid hex format' in response_text:
+            return True
+        else:
+            return False
+
+    def is_slug_invalid(self) -> bool:
+        self.page.wait_for_selector(self.error_message_url, state='visible',
+                                    timeout=10000)
+
+        response_text = self.page.locator(self.error_message_url).inner_text()
+        if 'URL cannot be longer than 191 characters.' in response_text:
+            return True
+        else:
+            return False
+
+    def is_descripti_invalid(self) -> bool:
+        self.page.wait_for_selector(self.error_message_description, state='visible',
+                                    timeout=10000)
+
+        response_text = self.page.locator(self.error_message_description).inner_text()
+        if 'Description cannot be longer than 500 characters.' in response_text:
             return True
         else:
             return False
