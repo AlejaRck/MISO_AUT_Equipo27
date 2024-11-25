@@ -2,7 +2,7 @@ Especificaciones de Versiones de kraken y Playwright Equipo: 27 Integrantes:
     Sebastian Betancourth Zapata (s.betancourth@uniandes.edu.co)
     Alejandra Pinzón Suárez (ma.pinzons1@uniandes.edu.co)
 
-Nota: para la ejecución de los escenarios con ejecución de generación de datos ir a la carpeta de e2e_playwrite
+Nota: para la ejecución de los escenarios con ejecución de generación de datos ir a la carpeta de e2e_playwrite y el archivo readme_generacion_datos.md
 
 Este repositorio contiene diferentes versiones de kraken y Playwright, organizadas en carpetas para su correcta implementación. A continuación, se detallan las carpetas y las versiones disponibles.
 kraken
