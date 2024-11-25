@@ -1,12 +1,16 @@
 from playwright.sync_api import Page
+from playwright._impl._errors import TimeoutError
 
 
 class PostPage:
     def __init__(self, page: Page):
         self.page = page
+        self.return_post = 'a[href="#/posts/"]'
         self.new_post = '[title="New post"]'
         self.post_title = 'textarea[placeholder="Post title"]'
         self.post_content = 'div[contenteditable="true"]'
+        self.post_imagen_button = 'button.gh-editor-feature-image-add-button'
+        self.post_imgaen = "input[type='file']"
         self.post_save = 'button.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger'
         self.continue_button = 'button[data-test-button="continue"]'
         self.button_accept_visable = 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view:not([disabled]):visible'
@@ -19,17 +23,39 @@ class PostPage:
         self.page.click(self.new_post)
         self.page.wait_for_selector(self.post_title)
 
-    def create_post(self, title: str, content: str):
+    def create_post(self, title:str='', content:str='', imagen: str=None):
         self.page.fill(self.post_title, title)
         self.page.fill(self.post_content, content)
-        self.page.click(self.post_save)
-        self.page.wait_for_selector(self.continue_button)
-        self.page.click(self.continue_button)
-        self.page.wait_for_selector(self.button_accept_visable)
-        self.page.click(self.button_accept, force=True)
-        self.page.wait_for_selector(self.button_public)
-        self.page.click(self.button_public)
-        self.page.wait_for_timeout(2000)
+        if imagen:
+            self.page.click(self.post_imagen_button)
+            self.page.wait_for_selector(self.post_imgaen)
+            self.page.wait_for_timeout(2000)
+            self.page.evaluate("""
+                   (base64Data) => {
+                       // Encuentra el contenedor donde debe ir la imagen
+                       const container = document.querySelector('.image-upload-container'); // Ajusta el selector
+                       if (container) {
+                           const img = document.createElement('img');
+                           img.src = base64Data;
+                           container.appendChild(img);
+
+                           // Simula el evento de subida
+                           container.dispatchEvent(new Event('change', { bubbles: true }));
+                       }
+                   }
+               """, imagen)
+        try:
+            self.page.click(self.post_save)
+            self.page.wait_for_selector(self.continue_button)
+            self.page.click(self.continue_button)
+            self.page.wait_for_selector(self.button_accept_visable)
+            self.page.click(self.button_accept, force=True)
+            self.page.wait_for_selector(self.button_public)
+            self.page.click(self.button_public)
+            self.page.wait_for_timeout(2000)
+        except TimeoutError:
+            self.page.click(self.return_post, force=True)
+
 
     def is_post_published(self, title: str) -> bool:
         return self.page.is_visible(f"text='{title}'")

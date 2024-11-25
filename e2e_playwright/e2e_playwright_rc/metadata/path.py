@@ -7,6 +7,7 @@ class Path:
 
     input_ = os.path.join(path_folder, '..', 'input')
     """Path donde se encuentran los archivos de entrada"""
+    input_mockaroo = os.path.join(input_, 'mockaroo')
 
     output_ = os.path.join(path_folder, '..', 'output')
     result_img_version_base = os.path.join(output_, 'resultado_img_version_base')

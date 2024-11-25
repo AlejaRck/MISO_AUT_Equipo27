@@ -1,9 +1,11 @@
 from playwright.sync_api import Page
+from playwright._impl._errors import TimeoutError
 
 
 class PagePage:
     def __init__(self, page: Page):
         self.page = page
+        self.return_page = 'a[href="#/pages/"]'
         self.page_pages = 'a[data-test-nav="pages"]'
         self.new_pages = "a[data-test-new-page-button]"
         self.title_input = 'textarea[placeholder="Page title"]'
@@ -23,17 +25,21 @@ class PagePage:
         self.page.wait_for_selector(self.title_input)
 
 
-    def create_page(self, title: str, content: str):
+    def create_page(self, title:str='', content:str=''):
         self.page.fill(self.title_input, title)
         self.page.fill(self.content_input, content)
-        self.page.click(self.save_page)
-        self.page.wait_for_selector(self.continue_button)
-        self.page.click(self.continue_button)
-        self.page.wait_for_selector(self.button_accept_visable)
-        self.page.click(self.button_accept, force=True)
-        self.page.wait_for_selector(self.button_public)
-        self.page.click(self.button_public)
-        self.page.wait_for_timeout(2000)
+        try:
+            self.page.click(self.save_page)
+            self.page.wait_for_selector(self.continue_button)
+            self.page.click(self.continue_button)
+            self.page.wait_for_selector(self.button_accept_visable)
+            self.page.click(self.button_accept, force=True)
+            self.page.wait_for_selector(self.button_public)
+            self.page.click(self.button_public)
+            self.page.wait_for_timeout(2000)
+        except TimeoutError:
+            self.page.click(self.return_page, force=True)
+            self.page.wait_for_timeout(2000)
 
-    def is_page_published(self, title: str) -> bool:
+    def is_page_published(self, title:str='') -> bool:
         return self.page.is_visible(f"text='{title}'")

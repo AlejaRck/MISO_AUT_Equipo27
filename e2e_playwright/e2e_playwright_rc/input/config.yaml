@@ -1,4 +1,4 @@
-ghost_url: http://localhost:2368/ghost
+ghost_url: http://localhost:3001/ghost
 
 admin_user: pruebas@gmail.com
 admin_pass: Lego123456789
