@@ -65,3 +65,31 @@ def test_creacion_tag_sin_nombre_tags_001(setup):
         screenshot_test(page, f'tag-001')
 
     assert is_public
+
+
+@pytest.mark.test_id("tag-002")
+def test_creacion_tag_sin_slug_tags_002(setup):
+    # Accedemos a la página que ya está autenticada
+    page = setup
+    tag_page = TagsPage(page)
+    fake = Faker()
+    tags_data = generate_random_data_tag('tag_002')
+    if not tags_data:
+        tags_data = { 'nombre': fake.name(),
+                      'slug': fake.word(),
+                      'descripcion': fake.sentence(),
+                      'color': fake.color()
+        }
+
+    tag_page.go_to_create_tags()
+    name = tags_data['nombre']
+    descripcion = tags_data['descripcion']
+    color = tags_data['color']
+    color = color.replace("#", "")
+    tag_page.create_tag(title=name, color=str(color), descripcion=descripcion)
+
+    is_public = tag_page.is_tag_created(name)
+    if not is_public:
+        screenshot_test(page, f'tag-002')
+
+    assert is_public
