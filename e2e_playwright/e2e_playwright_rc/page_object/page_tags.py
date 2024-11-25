@@ -8,6 +8,9 @@ class TagsPage:
         self.page_tags = 'a[data-test-nav="tags"]'
         self.new_tag = 'a.gh-btn.gh-btn-primary'
         self.name_input = "input[name='name']"
+        self.slug_input = "input[name='slug']"
+        self.color_input = "input[name='accent-color']"
+        self.des_input = "textarea#tag-description"
         self.save_button = 'button[data-test-button="save"]'
         self.tags_names = '.gh-tag-list-name'
         self.tags_url = f'{self.config["ghost_url"]}/#/tags/new'
@@ -32,9 +35,12 @@ class TagsPage:
         return input_element is not None and input_element.is_visible()
 
 
-    def create_tag(self, title: str):
+    def create_tag(self, title:str='', slug:str='', color:str='', descripcion=''):
             self.page.wait_for_selector(self.name_input)
             self.page.fill(self.name_input, title)
+            self.page.fill(self.slug_input, slug)
+            self.page.fill(self.color_input, color),
+            self.page.fill(self.des_input, descripcion)
             self.page.click(self.save_button)
             self.page.wait_for_timeout(2000)
 
