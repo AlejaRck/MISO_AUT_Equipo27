@@ -63,7 +63,7 @@ class TagsPage:
                                     timeout=10000)
 
         response_text = self.page.locator(self.name_error).inner_text()
-        if "You must specify a name for the tag." in response_text:
+        if "You must specify a name for the tag." in response_text or 'The colour should be in valid hex format' in response_text:
             return True
         else:
             return False

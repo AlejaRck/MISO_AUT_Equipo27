@@ -93,3 +93,61 @@ def test_creacion_tag_sin_slug_tags_002(setup):
         screenshot_test(page, f'tag-002')
 
     assert is_public
+
+
+@pytest.mark.test_id("tag-003")
+def test_creacion_sin_datos_tags_003(setup):
+    # Accedemos a la página que ya está autenticada
+    page = setup
+    tag_page = TagsPage(page)
+    fake = Faker()
+    tags_data = generate_random_data_tag('tag_003')
+    if not tags_data:
+        tags_data = { 'nombre': '',
+                      'slug': '',
+                      'descripcion': '',
+                      'color': ''
+        }
+
+    tag_page.go_to_create_tags()
+    name = tags_data['nombre']
+    slug = tags_data['slug']
+    descripcion = tags_data['descripcion']
+    color = tags_data['color']
+    color = color.replace("#", "")
+    tag_page.create_tag(title=name, slug=slug, color=str(color), descripcion=descripcion)
+
+    is_public = tag_page.is_name_no_present()
+    if not is_public:
+        screenshot_test(page, f'tag-003')
+
+    assert is_public
+
+
+@pytest.mark.test_id("tag-004")
+def test_creacion_nombre_corte_tags_004(setup):
+    # Accedemos a la página que ya está autenticada
+    page = setup
+    tag_page = TagsPage(page)
+    fake = Faker()
+    tags_data = generate_random_data_tag('tag_004')
+    if not tags_data:
+        tags_data = {'nombre': fake.sentence(nb_words=1),
+                     'slug': fake.word(),
+                     'descripcion': fake.sentence(),
+                     'color': fake.color()
+                     }
+
+    tag_page.go_to_create_tags()
+    name = tags_data['nombre']
+    slug = tags_data['slug']
+    descripcion = tags_data['descripcion']
+    color = tags_data['color']
+    color = color.replace("#", "")
+    tag_page.create_tag(title=name, slug=slug, color=str(color), descripcion=descripcion)
+
+    is_public = tag_page.is_tag_created(name)
+    if not is_public:
+        screenshot_test(page, f'tag-004')
+
+    assert is_public
