@@ -54,14 +54,13 @@ def test_creacion_tag_sin_nombre_tags_001(setup):
         }
 
     tag_page.go_to_create_tags()
-    title = tags_data['nombre']
     slug = tags_data['slug']
     descripcion = tags_data['descripcion']
     color = tags_data['color']
     color = color.replace("#", "")
-    tag_page.create_tag(title=title, slug=slug, color=str(color), descripcion=descripcion)
+    tag_page.create_tag(slug=slug, color=str(color), descripcion=descripcion)
 
-    is_public = tag_page.is_tag_created(title)
+    is_public = tag_page.is_name_no_present()
     if not is_public:
         screenshot_test(page, f'tag-001')
 

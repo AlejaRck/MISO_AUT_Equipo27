@@ -15,6 +15,7 @@ class TagsPage:
         self.tags_names = '.gh-tag-list-name'
         self.tags_url = f'{self.config["ghost_url"]}/#/tags/new'
         self.name_input_aut = "input[name='identification']"
+        self.name_error = 'div.form-group.mr2.flex-auto.error span.error p.response:first-of-type'
 
     def go_to_create_tags(self):
 
@@ -52,6 +53,17 @@ class TagsPage:
         tags = self.page.query_selector_all(self.tags_names)
         tags_texto = [tag.text_content().strip() for tag in tags]
         if name in tags_texto:
+            return True
+        else:
+            return False
+
+    def is_name_no_present(self) -> bool:
+
+        self.page.wait_for_selector(self.name_error, state='visible',
+                                    timeout=10000)
+
+        response_text = self.page.locator(self.name_error).inner_text()
+        if "You must specify a name for the tag." in response_text:
             return True
         else:
             return False
