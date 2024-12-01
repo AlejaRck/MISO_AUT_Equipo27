@@ -7,6 +7,16 @@ Nota: para la ejecución de los escenarios con ejecución de generación de dato
 Este repositorio contiene diferentes versiones de kraken y Playwright, organizadas en carpetas para su correcta implementación. A continuación, se detallan las carpetas y las versiones disponibles.
 kraken
 
+Las versiones entrega final (entrega semana 8) se encuentran dentro de las siguiente carpeta:
+
+1. version_rc:
+
+    Carpeta: e2e_playwright_45
+
+    Versión: Release Candidate
+
+        Dentro de esta carpeta encontrarás un archivo README.md con las instrucciones detalladas para la instalación y uso de la herramienta.
+
 Las versiones de kraken se encuentran dentro de las siguientes carpetas:
 1. version_base:
 
@@ -42,3 +52,4 @@ Dentro de esta carpeta encontrarás un archivo README.md con las instrucciones d
     Carpeta: e2e_playwright_rc
 
     Versión: Release Candidate
+

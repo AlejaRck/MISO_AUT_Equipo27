@@ -58,7 +58,7 @@ Dentro de la carpeta de cada versión (e2e_playwright_45, e2e_playwright_rc), es
     2. Usuario: Especificar el nombre de usuario con permisos para acceder al sistema.
     3. Contraseña: Incluir la contraseña asociada al usuario.
     
-Asegúrate de guardar los cambios correctamente antes de continuar con la ejecución del proyecto.
+Asegúrate de guardar los cambios correctamente antes de continuar con la ejecución del proyecto
 
 ejemplo:
 ```yaml
@@ -72,6 +72,8 @@ Ejecutar las pruebas de e2e_playwright: Ahora, puedes ejecutar las pruebas. Para
          para la version base main.py =  main_version_base.py
          
          para la version rc main.py = main_version_rc.py
+
+         para la verison final (Entrega Semana 8) main.py = main_entrega_final.py
          
          linux = python3 main.py
          
