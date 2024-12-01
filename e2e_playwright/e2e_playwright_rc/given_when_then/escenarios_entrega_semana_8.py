@@ -126,7 +126,7 @@ def test_edicion_de_un_miembro_sem_003(setup):
 
 
 @pytest.mark.test_id("SEM8-004")
-def test_eliminar_nombre_de_un_miembro_sem_003(setup):
+def test_eliminar_nombre_de_un_miembro_sem_004(setup):
     page = setup
     member_page = MemberPage(page)
     fake = Faker()
