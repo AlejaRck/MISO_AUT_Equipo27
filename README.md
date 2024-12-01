@@ -42,3 +42,14 @@ Dentro de esta carpeta encontrarás un archivo README.md con las instrucciones d
     Carpeta: e2e_playwright_rc
 
     Versión: Release Candidate
+
+
+Las versiones de final (entrega semana 8) se encuentran dentro de las siguientes carpetas:
+
+2. version_rc:
+
+    Carpeta: e2e_playwright_45
+
+    Versión: Release Candidate
+
+        Dentro de esta carpeta encontrarás un archivo README.md con las instrucciones detalladas para la instalación y uso de la herramienta.
