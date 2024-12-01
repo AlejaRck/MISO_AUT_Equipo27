@@ -16,6 +16,8 @@ class PostPage:
         self.button_accept_visable = 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view:not([disabled]):visible'
         self.button_accept = 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'
         self.button_public = 'button[data-test-button="close-publish-flow"]'
+        self.button_update = 'button[data-test-button="publish-save"]'
+        self.edit_post_button= 'h3.gh-content-entry-title:has-text'
 
 
     def go_to_create_post(self):
@@ -57,8 +59,21 @@ class PostPage:
             self.page.click(self.return_post, force=True)
 
 
-    def is_post_published(self, title: str) -> bool:
+    def is_post_published(self, title:str='') -> bool:
         return self.page.is_visible(f"text='{title}'")
 
-    def is_post_not_published(self, title: str) -> bool:
+    def is_post_not_published(self, title:str='') -> bool:
         return not self.page.is_visible(f"text='{title}'")
+
+    def go_to_public_post(self, title:str) -> bool:
+
+        if self.is_post_published(title):
+            self.page.click(f'{self.edit_post_button}("{title}")')
+
+    def edit_post(self, new_title:str='' ,new_contenido:str=''):
+        self.page.fill(self.post_title, new_title)
+        self.page.fill(self.post_content, new_contenido)
+        self.page.click(self.button_update)
+        self.page.wait_for_timeout(2000)
+        self.page.click(self.return_post, force=True)
+        self.page.wait_for_timeout(2000)

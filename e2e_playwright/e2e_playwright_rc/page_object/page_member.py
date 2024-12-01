@@ -17,6 +17,7 @@ class MemberPage:
         self.label_selector = "div.ember-basic-dropdown-trigger"
         self.label_input = "input.ember-power-select-trigger-multiple-input"
         self.textarea_selector = "textarea#member-note"
+        self.edit_member = f":has-text"
 
 
     def go_to_create_member(self):
@@ -90,4 +91,10 @@ class MemberPage:
             return True
         else:
             return False
+
+    def go_to_edit_member(self, name: str) -> bool:
+
+        if self.is_member_created(name):
+            self.page.click(f"{self.edit_member}('{name}')")
+
 

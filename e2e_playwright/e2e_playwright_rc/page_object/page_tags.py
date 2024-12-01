@@ -19,6 +19,8 @@ class TagsPage:
         self.color_error = 'div.gh-tag-settings-multiprop div.form-group.gh-tag-settings-colorcontainer.error'
         self.error_message_url = 'div.form-group.success p.response:first-of-type'
         self.error_message_description = 'div.form-group.no-margin.error p.response:first-of-type'
+        self.edit_tag = "a[title='Edit tag'] h3:has-text"
+
 
     def go_to_create_tags(self):
 
@@ -101,3 +103,9 @@ class TagsPage:
             return True
         else:
             return False
+
+    def go_to_edit_tag(self, name: str) -> bool:
+
+        if self.is_tag_created(name):
+            self.page.click(f"{self.edit_tag}('{name}')")
+            self.page.wait_for_timeout(2000)
